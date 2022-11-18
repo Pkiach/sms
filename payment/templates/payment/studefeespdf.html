@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School</title>
+    
+</head>
+
+<body>
+    <h1>{{title}}</h1>
+    <table border="1">
+        <thead>
+            <tr>
+            <td>serial no</td>
+            <td>regnumber</td>
+            <td>telephone_number</td>
+            <td>amount</td>
+            <td>date</td>
+            </tr>
+         </thead>
+         {% for k in queryset %}
+         <tbody>
+            <tr>
+                <td>{{ forloop.counter}} </td>
+                <td>{{ k.student_number}}</td>
+                <td>{{ k.telephone_number}}</td>
+                <td>{{k.amount}}</td>            
+                <td>{{ k.date}}</td>
+               
+                        
+                
+            </tr>
+         </tbody>
+         {%endfor%}
+    </table>
+
+
+
+
+
+
+</body
+</html

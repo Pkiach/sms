@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %} 
+<div><h1>{{title}}</h1></div>
+  
+   <form class="tbl1" method="POST" enctype='multipart/form-data'>   
+    
+    {%csrf_token%}
+    {% for message in messages %}
+<p>{{message}}</p>
+{%endfor%}
+
+    {{form | crispy}} 
+    
+
+<div class="appyform">
+    <br>
+    <button class="btn btn-success"type="submit">Apply</button>
+</div> 
+   </form> 
+
+  
+   {% endblock %} 

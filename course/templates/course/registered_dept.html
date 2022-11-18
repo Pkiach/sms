@@ -1,0 +1,27 @@
+{% extends 'admin.html' %}
+{% block content %}
+<h1>{{title}}</h1>
+<table>
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>dept_code</td>
+        <td>department_name/td>
+       
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ k.dept_code}}</td>
+            <td>{{ k.department_name}}</td>
+                       
+            
+        </tr>
+        {%endfor%}
+     </tbody>
+    
+</table>
+{% endblock %}

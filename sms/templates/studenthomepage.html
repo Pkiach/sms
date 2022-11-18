@@ -1,0 +1,110 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin-left: 0%;
+          margin-top: 0.2%;
+          padding: 0;
+          overflow: hidden;
+          display: block;
+          background-color: blueviolet;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display:inline-block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #04AA6D;
+        }
+        ul,li,a,.sub_menu:hover{
+         display: block;
+         
+        }
+        .hello-msg{
+          font-size: 20px;
+          color: white;
+          margin-right: 20px;
+        }
+        .tbl{
+          margin-top: 1px;
+          padding: 0;
+        }
+
+        
+      </style>
+</head>
+<body>
+
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container_fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="name navbar"> <a href="elgon view collage"><h1>ELGON VIEW COLLEGE</h1></a></div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-flex justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link "href="{% url 'student_home' %}">Home</a>
+                  </li>
+                  
+                  <li class="nav-item">                    
+                    <a class="nav-link" href="{% url 'registersubject' %}">Subject registration</a>
+
+                    </li>
+                    <li class="nav-item">                    
+                      <a class="nav-link" href="{% url 'register' %}">Update</a></li>
+
+                    <li class="nav-item">                    
+                        <a class="nav-link" href="{% url 'feespayment' %}">Fees payment</a></li>
+                    
+                        <li class="nav-item">                    
+                          <a class="nav-link" href="{% url 'register' %}">Userinformation</a></li>
+  
+                    <li class="nav-item">                    
+                      <a class="nav-link" href="{% url 'userfees' %}">Fees statement</a></li>
+                    {%if user.is_authenticated %}
+                    </li>
+                    <li class="nav-item">Hello {{student.Lastname}}</a></li>
+                    <li class="nav-item">                    
+                        <a class="nav-link" href="{% url 'logoutstudent' %}">Logout</a></li>
+
+                    {% else%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'students' %}">students portal</a>
+                    </li>  
+                        {% endif %}
+                                                               
+                 
+                </ul>
+    
+              </div>
+            </div>
+            
+          </nav>
+    {% block content %}
+    {% endblock %}
+         
+</body>
+</body>
+</html>
+

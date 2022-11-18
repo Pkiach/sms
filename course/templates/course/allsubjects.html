@@ -1,0 +1,35 @@
+{% extends 'admin.html' %}
+{% block content %}
+<div class="btn btn-success" ><i class="fa-solid fa-plus"><a href="{% url 'add' %}">ADD Subject</a></i></div>
+
+<h1>{{title}}</h1>
+
+<table class="tbl" border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>subject_code</td>
+        <td>subject_name</td>
+        <td>deptment_id</td>
+       
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for x in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ x.subjectcode}}</td>
+            <td>{{ x.subject_name}}</td>
+            <td>{{ x.dept_no}}</td> 
+            <td><div><a href="{% url 'update_subject' subjectcode=x.subjectcode %}" class="btn btn-sucess">Update</a></div></td>             
+            <td><div><a href="{% url 'drop_subject' subjectcode=x.subjectcode %}" class="btn btn-danger">Delete</a></div></td>            
+            
+            
+        </tr>
+        
+     {%endfor%}
+     </tbody>
+</table>
+
+{% endblock %} 

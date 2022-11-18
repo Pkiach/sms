@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School</title>
+    
+</head>
+
+<body>
+   
+
+<table class="tbl" border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+        
+        <td>id</td>
+        <td>Regnumber</td>
+        <td>Firstname</td>
+        <td>Middlename</td>
+        <td>Lastname</td>
+        <td>StudentEmail</td>
+        <td>IDnumber</td>
+        <!-- <td>Address</td> -->
+        <td>ResultsSlip</td>
+        <!-- <td>DOB</td> -->
+        <td>ID frontID</td>
+        <td>coursename</td>
+        <!-- <td>Birthcertificatenumber</td> -->
+         <td>status</td>
+        
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            
+           <td>{{k.id}}</td>
+            <td>{{ k.Regnumber}}</td>
+            <td>{{ k.Firstname}}</td>
+            <td>{{ k.Middlename}}</td>
+            <td>{{ k.Lastname}}</td>
+            <td>{{ k.StudentEmail}}</td>
+            <td>{{ k.IDnumber}}</td>
+            <!-- <td>{{ k.Address}}</td> -->
+            <td>{{ k.ResultsSlip}}</td>
+            <!-- <td>{{ k.DOB}}</td> -->
+            <td>{{ k.frontID}}</td>
+            <td>{{ k.coursename}}</td>              
+            <td> <a href="{% url 'delete' student_id=k.id %}" class="btn btn-danger">Delete</a></td>
+           
+            
+        </tr>
+        
+     {%endfor%}
+     </tbody>
+</table>
+
+
+
+
+</body
+</html

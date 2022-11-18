@@ -1,0 +1,41 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% for message in messages %}
+<p>{{message}}</p>
+{%endfor%}
+<div class="btn btn-success" ><i class="fa-solid fa-plus"><a href="{% url 'coursereg' %}">ADD Course</a></i></div>
+
+   <form method="POST">
+    {%csrf_token%}
+    {{form.as_p}} 
+    <button type="submit">search</button>
+   </form> 
+   
+<h1>{{title}}</h1>
+<table border="1">
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>course_code</td>
+        <td>course_name</td>
+       
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ k.course_code}}</td>
+            <td>{{ k.course_name}}</td>
+            <td><div><a href="{% url 'update_course' course_code=k.course_code %}" class="btn btn-sucess">Update</a></div></td>  
+            <td><a href="{% url 'delcos' course_code=k.course_code %}" class="btn btn-danger">Delete</a></td>
+        
+                  
+            
+        </tr>
+        {%endfor%}
+     </tbody>
+    
+</table>
+ {% endblock %}

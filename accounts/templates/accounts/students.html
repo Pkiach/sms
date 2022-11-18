@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>students</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #04AA6D;
+        }
+        ul,li,a,.sub_menu:hover{
+         display: block;
+         
+        }
+        .hello-msg{
+          font-size: 20px;
+          color: white;
+          margin-right: 20px;
+        }
+
+        
+      </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container_fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarToggle">
+                <a class="nav_menu" href="#">ELGON VIEW COLLEGE</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-flex justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link "href="home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about us">classattendance</a>
+                  </li>
+                 
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">fees</a>
+                <ul>
+                    <li class="nav-item">
+                        <a class="sub_menu" href="#">fees payment</a></li>
+                            <li class="nav-item">
+                                <a class="sub_menu" href="#">fees statement</a>
+                                </li>
+
+                </ul>
+                
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="staff">registered subjects</a>
+                  </li>
+                 
+                  <li class="nav-item">
+                    <a class="nav-link" href="students portal">students portal</a>
+                  </li>              
+                 </ul>
+    
+              </div>
+            </div>
+            <span class="hello-msg">Hello, {{request.user</span>
+            <span><a class="{% url 'logout' %}">logout</a></span>
+          </nav>
+    
+         
+</body>
+</body>
+</html>

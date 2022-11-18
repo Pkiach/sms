@@ -1,0 +1,103 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+{% block content %}
+{% with img_url="http://localhost:8000/image/" %}
+<h1>{{title}}</h1>
+
+    {% comment %}
+    <form method="GET">
+        {%csrf_token%}
+        
+        {{form.as_p}}
+        <button type="submit">search</button>
+    </form> 
+    <h1>{{title}}</h1>
+    {% endcomment %}
+
+<table class="tbl" border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+        
+        <td>id</td>
+        <td>Regnumber</td>
+        <td>Firstname</td>
+        <td>Middlename</td>
+        <td>Lastname</td>
+        <td>StudentEmail</td>
+        <td>IDnumber</td>
+        <!-- <td>Address</td> -->
+        <td>ResultsSlip</td>
+        <!-- <td>DOB</td> -->
+        <td>ID frontID</td>
+        <td>coursename</td>
+        <!-- <td>Birthcertificatenumber</td> -->
+         <td>status</td>
+         <td>status</td>
+        <!-- <td>backId</td> --> -->
+        <!-- <td>parentname</td> -->
+        <!-- <td>email</td> -->
+        <!-- <td>parentnumber</td> -->
+        <!-- <td>dateregistered</td> -->
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            
+           <td>{{k.id}}</td>
+            <td>{{ k.Regnumber}}</td>
+            <td>{{ k.Firstname}}</td>
+            <td>{{ k.Middlename}}</td>
+            <td>{{ k.Lastname}}</td>
+            <td>{{ k.StudentEmail}}</td>
+            <td>{{ k.IDnumber}}</td>
+            <!-- <td>{{ k.Address}}</td> -->
+            {% with id=k.ResultsSlip %}
+            {% if id %}
+                <td><a href="{{img_url}}{{id}}">{{id}}</a></td>
+            {% else %}
+                <td>--NA--</td>
+            {% endif %}
+            {% endwith %}
+            <!-- <td>{{ k.DOB}}</td> -->
+            <!-- <td>{{ k.frontID}}</td> -->
+            {% with id=k.frontID %}
+            {% if id %}
+                <td><a href="{{img_url}}{{id}}">{{id}}</a></td>
+            {% else %}
+                <td>--NA--</td>v 
+            {% endif %}
+            {% endwith %}
+
+            <td>{{ k.coursename}}</td>
+                {% if k.status == "UNAPPROVED" %}
+                <td><a href="{% url 'approve' student_id=k.id %}" class="btn btn-success">Approve</a></td>
+                <td><a href="{% url 'Disapprove' student_id=k.id %}" class="btn btn-danger">Disapprove</a></td>
+               {% elif k.status == "APPROVED" %}
+               <td><a href="{% url 'approve' student_id=k.id %}" class="btn btn-success">Approve</a></td>
+                {% elif k.status == "DISAPPROVED" %}
+                <td>  <a href="{% url 'Disapprove' student_id=k.id %}" class="btn btn-danger">Disapprove</a></td>
+                {% else %}           
+                <td>  <a href="{% url 'delete' student_id=k.id %}" class="btn btn-danger">Delete</a></td>
+                {% endif %}  
+        
+            <!-- <td>{{ k.Birthcertificatenumber}}</td> -->
+            <!-- <td>{{ k.Results_slip}}</td>
+            <td>{{ k.photo}}</td>
+            <td>{{ k.front_Id}}</td>
+            <td>{{ k.back_Id}}</td> -->
+            <!-- <td>{{ k.Parent_name}}</td> -->
+            <!-- <td>{{ k.Email}}</td> -->
+            <!-- <td>{{ k.ParentTelephonenumber}}</td> -->
+            <!-- <td>{{ k.Timeregistered}}</td> -->
+            
+        </tr>
+        
+     {%endfor%}
+     </tbody>
+</table>
+
+{% endwith %}
+{% endblock %}

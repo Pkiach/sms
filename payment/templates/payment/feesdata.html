@@ -1,0 +1,35 @@
+{% extends 'admin.html' %}
+{% block content %}
+
+<h1>{{title}}</h1>   
+   <form method="POST">
+    {%csrf_token%}
+<table border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>student_id</td>
+        <td>semester_id</td> 
+        <td>amount</td>
+        <td>status</td>     
+        
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ k.student_id}}</td>
+            <td>{{ k.semester_id}}</td>
+            <td>{{ k.amount}}</td>
+            <td>{{ k.status}}</td>        
+            <td><a class="btn btn-sm btn-info"href="{% url 'update_semester_fees' semester=k.semester %}">Update</a></td>
+                 
+            
+        </tr>
+        {%endfor%}
+     </tbody>
+    
+</table>
+{% endblock %}

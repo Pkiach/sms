@@ -1,0 +1,12 @@
+{% extends 'admin.html'%}
+{% block content %}
+   <h1> {{title}}</h1>
+   <p>Do you want to delete"{{item}}"?</p>
+   <form method="POST">
+      
+    {%csrf_token%}
+    {{form}}
+    <a href="{% url 'course' %}">Cancel</a>
+    <button type="submit" name="confirm">Delete</button>
+   </form> 
+   {% endblock %}

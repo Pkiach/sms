@@ -1,0 +1,71 @@
+{% extends 'admin.html' %}
+{% block content %}
+<h1>{{title}}</h1>
+   <form method="GET">
+    {%csrf_token%}
+    
+    {{form.as_p}}
+    <button type="submit">search</button>
+   </form> 
+<h1>{{title}}</h1>
+<div class="search"><a href="search/">search</a></div>
+<table class="tbl" border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+        
+        <td>id</td>
+        <td>lecturer_no</td>
+        <td>Title</td>
+        <td>First_name</td>
+        <td>Middle_name</td>
+        <td>Last_name</td>
+        <td>Email</td>
+        <td>Telephone_no</td>
+        <td>Address</td>
+        <td>Gender</td>
+        <!-- <td>DOB</td> -->
+        <td>ID_number</td>
+        <td>status</td>
+        <!-- <td>Birthcertificatenumber</td> -->
+         <td>Date_registered</td>
+       
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            
+           <td>{{k.id}}</td>
+            <td>{{ k.lecturer_no}}</td>
+            d>{{ k.Title}}</td>
+            <td>{{ k.Firstname}}</td>
+            <td>{{ k.Middlename}}</td>
+            <td>{{ k.Lastname}}</td>
+            <td>{{ k.Email}}</td>
+            d>{{ k.Telephonenumber}}</td>
+            <td>{{ k.Address}}</td>
+            <td>{{ k.Gender}}</td>
+            <td>{{ k.IDnumber}}</td>            
+            <td>{{ k.status}}</td>
+            <td>{{ k.Timeregistered}}</td>           
+            <td>  <a href="{% url 'delete_staff' lecturer_id=k.id %}" class="btn btn-danger">Delete</a></td>
+              
+        
+            <!-- <td>{{ k.Birthcertificatenumber}}</td> -->
+            <!-- <td>{{ k.Results_slip}}</td>
+            <td>{{ k.photo}}</td>
+            <td>{{ k.front_Id}}</td>
+            <td>{{ k.back_Id}}</td> -->
+            <!-- <td>{{ k.Parent_name}}</td> -->
+            <!-- <td>{{ k.Email}}</td> -->
+            <!-- <td>{{ k.ParentTelephonenumber}}</td> -->
+            <!-- <td>{{ k.Timeregistered}}</td> -->
+            
+        </tr>
+        
+     {%endfor%}
+     </tbody>
+</table>
+
+{% endblock %} 

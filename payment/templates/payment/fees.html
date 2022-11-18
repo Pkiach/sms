@@ -1,0 +1,8 @@
+{% extends 'admin.html' %}
+{% load cripy_form_tag%}
+{% block content %}
+<h1>{{title}}</h1>
+   <form method="post">
+    {%csrf_token%}
+    {{form | crispy}}
+    {% endblock %}

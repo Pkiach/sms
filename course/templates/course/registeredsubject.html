@@ -1,0 +1,27 @@
+{% extends 'student.html' %}
+{% block content %}
+<h1>{{title}}</h1>
+<table>
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>subject</td>
+        <td>term_id/td>
+       
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ k.subject}}</td>
+            <td>{{ k.term_id}}</td>
+                       
+            
+        </tr>
+        {%endfor%}
+     </tbody>
+    
+</table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'admin.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div><i class="fa-solid fa-plus"><a href="{% url 'adddepartment' %}">ADD Department</a></i></div>
+{% for message in messages %}
+<p>{{message}}</p>
+{%endfor%}
+
+<form method="POST">
+    {%csrf_token%}
+    {{form | crispy }} 
+    <button type="submit">search</button>
+   </form> 
+ <h1>{{title}}</h1>
+<table border="1">
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>school</td>
+        <td>dept_code</td>
+        <td>department_name</td>
+       
+    </tr>
+     </thead>
+     
+     <tbody>
+       
+        {% for x in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ x.school_id}}</td>
+            <td>{{ x.dept_code}}</td>
+            <td>{{ x.department_name}}</td>  
+            <td><div><a href="{% url 'update_department' dept_code=x.dept_code %}" class="btn btn-sucess">Update</a></div></td>          
+            <td><div><a href="{% url 'remove' dept_code=x.dept_code %}" class="btn btn-danger">Delete</a></div></td>            
+            
+        </tr>
+        
+     {%endfor%}
+     </tbody>
+</table>
+
+ {% endblock %}

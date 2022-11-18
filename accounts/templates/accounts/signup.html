@@ -1,0 +1,13 @@
+{% load crispy_forms_tags %}
+{% block content %}
+    
+   <form method="POST">
+    <h1>{{title}}</h1>
+    {%csrf_token%}
+    {{form | crispy}}
+    <button type="submit">SignUp</button>
+    <div class="float-right">
+        <p>Have an account</p> <a href="{% url 'signin' %}">Login </a>
+       </div>
+   </form> 
+   {% endblock %}

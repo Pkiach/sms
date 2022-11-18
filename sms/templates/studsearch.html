@@ -1,0 +1,12 @@
+{% extends 'admin.html' %}
+{% block content %}
+<h1>{{title}}</h1>
+   <form method="GET">
+    {%csrf_token%}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {{form.as_p}}
+    <button type="submit">search</button>
+   </form> 
+   {% endblock %}

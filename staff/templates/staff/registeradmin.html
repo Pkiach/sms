@@ -1,0 +1,16 @@
+{% extends 'admin.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+   <form class="tbl1" method="POST" enctype='multipart/form-data'>
+    {%csrf_token%}
+    {{form | crispy}}
+ 
+   <div>
+    <button class="submit"type="submit">Register</button>
+  </div>
+   </form> 
+
+  
+   {% endblock %} 

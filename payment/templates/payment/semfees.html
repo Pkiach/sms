@@ -1,0 +1,13 @@
+{% extends 'admin.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% for message in messages %}
+{{message}}</br>
+{%endfor%}
+
+   <form method="post">
+      <h1>{{title}}</h1>
+    {%csrf_token%}
+    {{form | crispy}}
+    <button type="submit">Submit</button>
+    {% endblock %}

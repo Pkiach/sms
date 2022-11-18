@@ -1,0 +1,36 @@
+{% extends 'admin.html' %}
+{% block content %}
+<div class="btn btn-success" ><i class="fa-solid fa-plus"><a href="{% url 'sem_fees' %}">ADD Fees</a></i></div>
+
+<h1>{{title}}</h1>   
+   <form method="POST">
+    {%csrf_token%}
+<table border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+        <td>serial no</td>
+        <td>semester</td>
+        <td>fees</td> 
+        <td>year</td>
+        <td>status</td>     
+        
+    </tr>
+     </thead>
+     
+     <tbody>
+        {% for k in queryset %}
+        <tr>
+            <td>{{ forloop.counter}} </td>
+            <td>{{ k.semester}}</td>
+            <td>{{ k.fees}}</td>
+            <td>{{ k.year}}</td>
+            <td>{{ k.status}}</td>        
+            <td><a class="btn btn-sm btn-info"href="{% url 'update_semester_fees' semester=k.semester %}">Update</a></td>
+                 
+            
+        </tr>
+        {%endfor%}
+     </tbody>
+    
+</table>
+{% endblock %}
